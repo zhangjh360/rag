@@ -8,13 +8,14 @@
             "name": "Python Debugger",
             "type": "debugpy",
             "request": "launch",
-            "python": "/home/zhangjh/code/python/rag/venv/bin/python",
+            "python": "/home/zhangjh/work/code/python/rag/venv/bin/python",
             "program": "${workspaceFolder}/backend/app/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/backend",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/backend"
-                
+                "PYTHONPATH": "${workspaceFolder}/backend",
+                "HF_ENDPOINT": "https://hf-mirror.com",
+                "TRANSFORMERS_OFFLINE": "0"
             }
         },
         {
@@ -62,7 +63,9 @@
             ],
             "cwd": "${workspaceFolder}/backend",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/backend"
+                "PYTHONPATH": "${workspaceFolder}/backend",
+                "HF_ENDPOINT": "https://hf-mirror.com",
+                "TRANSFORMERS_OFFLINE": "0"
             },
             "jinja": true,
             "justMyCode": true

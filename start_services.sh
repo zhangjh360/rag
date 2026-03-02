@@ -9,8 +9,8 @@ if pgrep -f "uvicorn.*8800" > /dev/null; then
     echo "✅ 后端服务已在运行 (端口 8800)"
 else
     echo "🚀 启动后端服务..."
-    cd /home/zhangjh/code/python/rag/backend
-    source ../../venv/bin/activate
+    cd /home/zhangjh/work/code/python/rag/backend
+    source /home/zhangjh/work/code/python/rag/venv/bin/activate
     nohup uvicorn app.main:app --reload --host 127.0.0.1 --port 8800 > backend.log 2>&1 &
     echo "✅ 后端服务已启动 (端口 8800)"
 fi
@@ -23,7 +23,7 @@ if pgrep -f "vite.*3000" > /dev/null; then
     echo "✅ 前端服务已在运行 (端口 3000)"
 else
     echo "🚀 启动前端服务..."
-    cd /home/zhangjh/code/python/rag/frontend
+    cd /home/zhangjh/work/code/python/rag/frontend
     nohup yarn dev --port 3000 > frontend.log 2>&1 &
     echo "✅ 前端服务已启动 (端口 3000)"
 fi

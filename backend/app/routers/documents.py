@@ -10,7 +10,7 @@ from app.middleware.auth import get_current_active_user, require_document_upload
 from app.services.change_detector import ChangeDetector
 from app.services.incremental_indexer import IncrementalIndexer
 import PyPDF2
-from docx import Document as DocxDocument
+import docx2txt  # Python 3.13 兼容的 docx 处理库
 import json
 import re
 import hashlib
@@ -106,19 +106,8 @@ def extract_text_from_txt(file_path: str) -> str:
 def extract_text_from_docx(file_path: str) -> str:
     """从DOCX文件中提取文本内容"""
     try:
-        doc = DocxDocument(file_path)
-        text = ""
-
-        # 提取所有段落的文本
-        for paragraph in doc.paragraphs:
-            text += paragraph.text + "\n"
-
-        # 提取表格中的文本
-        for table in doc.tables:
-            for row in table.rows:
-                for cell in row.cells:
-                    text += cell.text + " "
-                text += "\n"
+        # 使用 docx2txt 提取文本 (兼容 Python 3.13)
+        text = docx2txt.process(file_path)
 
         # 清理提取的文本
         text = clean_text_content(text)

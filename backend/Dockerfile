@@ -9,6 +9,7 @@ RUN groupadd -r appuser && useradd -r -g appuser appuser
 # 安装系统依赖
 RUN apt-get update && apt-get install -y \
     gcc \
+    libpq-dev \
     postgresql-client \
     curl \
     && rm -rf /var/lib/apt/lists/* \

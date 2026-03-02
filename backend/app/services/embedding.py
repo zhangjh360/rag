@@ -7,6 +7,11 @@ from app.config.logging_config import get_app_logger
 from typing import List, Optional, Union
 import asyncio
 from functools import lru_cache
+import os
+
+# 设置 HuggingFace 镜像 (用于中国大陆)
+if not os.getenv('HF_ENDPOINT'):
+    os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
 logger = get_app_logger()
 
