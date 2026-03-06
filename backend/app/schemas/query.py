@@ -118,7 +118,7 @@ class QueryResponseV2(BaseModel):
         description="跨领域检索的分组结果"
     )
     retrieval_stats: RetrievalStats = Field(description="检索统计信息")
-    created_at: datetime = Field(default_factory=datetime.now, description="创建时间")
+    created_at: datetime = Field(default_factory=lambda: datetime.now(), description="创建时间")
 
     class Config:
         json_schema_extra = {
