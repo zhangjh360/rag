@@ -16,12 +16,12 @@ if TRACING_ENABLED:
    from traceloop.sdk import Traceloop
    # Traceloop.init(api_key="tl_09341271a5434811bc237a03b15bb9a2")
 
-   Traceloop.init(
-    app_name=TRACING_SERVICE_NAME,
-    disable_batch=True,
-    api_endpoint=TRACING_OTEL_ENDPOINT,
-    headers={"x-api-key": f"{TRACING_API_KEY}"},
-   )
+#    Traceloop.init(
+#     app_name=TRACING_SERVICE_NAME,
+#     disable_batch=True,
+#     api_endpoint=TRACING_OTEL_ENDPOINT,
+#     headers={"x-api-key": f"{TRACING_API_KEY}"},
+#    )
 
 
 
