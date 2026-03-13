@@ -25,7 +25,16 @@ else:
 # 环境变量配置
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_API_URL = os.getenv("OPENAI_API_URL")
-DB_URL = os.getenv("DB_URL", "postgresql://postgres:admin!postgres123@localhost:5432/ragdb")
+
+# 数据库URL - 使用 psycopg3 驱动
+_DB_URL = os.getenv("DB_URL", "postgresql://postgres:admin!postgres123@localhost:5432/ragdb")
+# 确保使用 psycopg 驱动而不是 psycopg2
+if "+psycopg" not in _DB_URL:
+    # 将 postgres:// 替换为 postgresql+psycopg://
+    DB_URL = _DB_URL.replace("postgresql://", "postgresql+psycopg://", 1)
+else:
+    DB_URL = _DB_URL
+
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-ada-002")
 CHAT_MODEL = os.getenv("CHAT_MODEL", "glm-4")
 
